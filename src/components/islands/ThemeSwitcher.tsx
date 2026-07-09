@@ -1,22 +1,20 @@
 import { useStore } from '@nanostores/react';
 import { $theme, type Theme } from '../../lib/state/theme-store';
+import { $persona } from '../../lib/state/persona-store';
 import { useEffect, useState } from 'react';
 
 export default function ThemeSwitcher() {
     const currentTheme = useStore($theme);
+    const currentPersona = useStore($persona);
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
         setIsMounted(true);
     }, []);
 
-    const availableThemes: Theme[] = [
-        'flat', 
-        'bento', 
-        'glass', 
-        'brutalism', 
-        'cyberpunk'
-    ];
+    const availableThemes: Theme[] = currentPersona === 'recruiter' 
+        ? ['flat', 'bento'] 
+        : ['flat', 'bento', 'glass', 'brutalism', 'cyberpunk'];
 
     const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         $theme.set(e.target.value as Theme);

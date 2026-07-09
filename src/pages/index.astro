@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import ThemeSwitcher from '../components/islands/ThemeSwitcher.tsx';
 ---
 
 <html lang="id">
@@ -8,34 +7,53 @@ import ThemeSwitcher from '../components/islands/ThemeSwitcher.tsx';
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<title>Mei's Corner</title>
-
-		<script is:inline>
-      		const storedTheme = localStorage.getItem('mei_corner_theme') || 'flat';
-      		document.documentElement.setAttribute('data-theme', storedTheme);
-    	</script>
+		<title>Mei's Corner | Gateway</title>
 	</head>
-	<body class="min-h-screen p-8 flex flex-col items-start gap-8">
-		
-		<header>
-			<h1 class="text-4xl font-extrabold mb-2" style="font-family: var(--font-heading);">
-				Mei's Corner
-			</h1>
-			<p class="text-lg" style="color: var(--color-text-secondary);">
-				Sistem Fondasi Tema Berhasil Diinisialisasi.
-			</p>
-		</header>
+  	<body class="min-h-screen bg-white text-black flex flex-col items-center justify-center p-8 selection:bg-black selection:text-white">
+    
+    	<div class="max-w-2xl w-full text-center space-y-12">
+      		<h1 class="text-6xl md:text-8xl font-black tracking-tighter uppercase border-b-8 border-black pb-8">
+        		Hi There! Which one describes you best?
+      		</h1>
+      
+      		<div class="flex flex-col gap-6 w-full max-w-md mx-auto font-bold uppercase tracking-widest text-lg">
+        		<button 
+					onclick="setPersonaAndNavigate('recruiter', '/recruiter')"
+					class="w-full py-4 cursor-pointer border-4 border-black hover:bg-black hover:text-white transition-colors duration-200"
+					style="box-shadow: 8px 8px 0px 0px #000000;"
+				>
+					I'm a Recruiter
+				</button>
+					
+				<button 
+					onclick="setPersonaAndNavigate('student', '/student')"
+					class="w-full py-4 cursor-pointer border-4 border-black hover:bg-black hover:text-white transition-colors duration-200"
+					style="box-shadow: 8px 8px 0px 0px #000000;"
+				>
+					I'm a Student
+				</button>
+					
+				<button 
+					onclick="setPersonaAndNavigate('explore', '/explore')"
+					class="w-full py-4 cursor-pointer border-4 border-black hover:bg-black hover:text-white transition-colors duration-200"
+					style="box-shadow: 8px 8px 0px 0px #000000;"
+				>
+					Don't Mind Me
+				</button>
+      		</div>
+    	</div>
 
-		<main>
-		<ThemeSwitcher client:load />
-		
-			<div class="mt-12 p-6 border-2 border-black" style="box-shadow: var(--shadow-card); background-color: var(--color-surface);">
-				<h2 class="text-2xl font-bold mb-4">Uji Coba Tampilan Kartu</h2>
-				<p>
-					Kartu ini menggunakan variabel CSS absolut untuk mematuhi aturan desain tanpa bergantung pada utilitas pewarnaan langsung.
-				</p>
-			</div>
-		</main>
+    	<script is:inline>
+      		function setPersonaAndNavigate(persona, path) {
+        		localStorage.setItem('mei_corner_persona', persona);
+        
+        		if (persona === 'recruiter') {
+          			localStorage.setItem('mei_corner_theme', 'flat'); 
+        		}
+        
+        		window.location.href = path;
+      		}
+    	</script>
 
-	</body>
+  	</body>
 </html>

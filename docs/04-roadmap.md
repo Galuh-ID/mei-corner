@@ -62,21 +62,21 @@
 **Task: Hero landing "What are you?"**
 - Description: Halaman `/` dengan pertanyaan hero dan 3 tombol persona.
 - Acceptance Criteria:
-  - [ ] 3 tombol persona tampil dan bisa diklik
-  - [ ] Klik tombol nge-set persona state dan redirect ke path yang sesuai
+  - [ x ] 3 tombol persona tampil dan bisa diklik
+  - [ x ] Klik tombol nge-set persona state dan redirect ke path yang sesuai
 
 **Task: Halaman utama recruiter**
 - Description: Susun halaman `/recruiter` — foto, intro singkat, pendidikan ringkas + View More, 3 project teratas + View More, 3 cert teratas + View More, contact.
 - Acceptance Criteria:
-  - [ ] Semua section tampil sesuai urutan di PRD §6
-  - [ ] "3 teratas" difilter otomatis dari field `featured`/`rank`
-  - [ ] Tombol View More mengarah ke halaman list lengkap
+  - [ x ] Semua section tampil sesuai urutan di PRD §6
+  - [ x ] "3 teratas" difilter otomatis dari field `featured`/`rank`
+  - [ x ] Tombol View More mengarah ke halaman list lengkap
 
 **Task: Nav khusus recruiter**
 - Description: Nav bar cuma tampilkan Educations, Projects, Certifications saat persona = recruiter.
 - Acceptance Criteria:
-  - [ ] Nav item lain (Modules, Glossarium) gak muncul di path ini
-  - [ ] Nav tetap konsisten di semua sub-halaman recruiter
+  - [ x ] Nav item lain (Modules, Glossarium) gak muncul di path ini
+  - [ x ] Nav tetap konsisten di semua sub-halaman recruiter
 
 ### Epic: Content Rendering Engine
 

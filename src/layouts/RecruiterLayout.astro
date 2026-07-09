@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<html lang="id" data-theme="flat">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{title} | Mei's Corner</title>
+    
+        <script is:inline>
+            const storedTheme = localStorage.getItem('mei_corner_theme') || 'flat';
+            document.documentElement.setAttribute('data-theme', storedTheme);
+        </script>
+    </head>
+    <body class="min-h-screen bg-white text-black font-sans selection:bg-black selection:text-white flex flex-col">
+        <header class="border-b-4 border-black p-6 flex justify-between items-center">
+            <div class="font-extrabold text-2xl tracking-tighter uppercase">
+                <a href="/recruiter">Mei's Corner</a>
+            </div>
+            <nav>
+                <ul class="flex gap-6 font-bold text-sm uppercase tracking-widest">
+                    <li><a href="/recruiter/educations" class="hover:underline underline-offset-4 decoration-4">Educations</a></li>
+                    <li><a href="/recruiter/projects" class="hover:underline underline-offset-4 decoration-4">Projects</a></li>
+                    <li><a href="/recruiter/certifications" class="hover:underline underline-offset-4 decoration-4">Certifications</a></li>
+                </ul>
+            </nav>
+        </header>
+
+    <main class="flex-grow p-8 max-w-6xl mx-auto w-full">
+        <slot />
+    </main>
+
+    <footer class="border-t-4 border-black p-6 text-center font-bold text-sm uppercase">
+        © {new Date().getFullYear()} Mei's Corner. All rights reserved.
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+---
+import RecruiterLayout from '../../layouts/RecruiterLayout.astro';
+import { getCollection } from 'astro:content';
+import ThemeSwitcher from '../../components/islands/ThemeSwitcher.tsx';
+
+const allProjects = await getCollection('projects');
+const featuredProjects = allProjects
+    .filter(p => p.data.featured)
+    .sort((a, b) => (a.data.rank || 99) - (b.data.rank || 99))
+    .slice(0, 3);
+
+const allCerts = await getCollection('certifications');
+const featuredCerts = allCerts
+    .filter(c => c.data.featured)
+    .sort((a, b) => (a.data.rank || 99) - (b.data.rank || 99))
+    .slice(0, 3);
+---
+
+<RecruiterLayout title="Professional Portfolio">
+  
+    <div class="flex justify-end mb-8 relative z-50">
+        <ThemeSwitcher client:load />
+    </div>
+
+    <section class="mb-20 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+        <div class="aspect-square bg-white border-4 border-black flex items-center justify-center font-bold text-xl uppercase tracking-widest" style="box-shadow: 12px 12px 0px 0px #000000;">
+            [Foto]
+        </div>
+        <div class="md:col-span-2 space-y-6">
+            <h1 class="text-5xl font-black uppercase tracking-tighter">Halo, Lorem Ipsum.</h1>
+            <p class="text-xl font-medium leading-relaxed border-l-8 border-black pl-6 py-2">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, blanditiis illum rerum ea quaerat sed autem commodi laudantium pariatur sunt deserunt ipsa et culpa optio distinctio voluptates! Vitae, tempore obcaecati.
+            </p>
+        </div>
+    </section>
+
+    <section class="mb-20">
+        <div class="flex justify-between items-end border-b-4 border-black pb-4 mb-8">
+            <h2 class="text-4xl font-black uppercase tracking-tight">Educations</h2>
+            <a href="/recruiter/educations" class="font-bold uppercase underline underline-offset-4 hover:bg-black hover:text-white px-2 transition-colors">View All Educations →</a>
+        </div>
+        
+        <div class="border-4 border-black p-8 relative" style="box-shadow: 8px 8px 0px 0px #000000;">
+            <div class="absolute -top-4 -left-4 bg-black text-white font-bold uppercase px-4 py-1 text-sm">Terbaru</div>
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+                <div>
+                    <h3 class="text-3xl font-black uppercase">Institut Teknologi Bandung</h3>
+                    <p class="text-lg font-bold mt-1">S1 Teknik Informatika</p>
+                </div>
+                <div class="text-right">
+                    <span class="inline-block border-2 border-black px-3 py-1 font-bold uppercase tracking-widest text-sm">
+                        2024 - 2028
+                    </span>
+                </div>
+            </div>
+            <p class="mt-6 font-medium leading-relaxed max-w-3xl">
+                Fokus pada arsitektur sistem backend, rekayasa perangkat lunak skala besar, dan analitik data tingkat lanjut. Aktif dalam berbagai proyek open-source dan riset komputasi awan.
+            </p>
+        </div>
+    </section>
+
+    <section class="mb-20">
+        <div class="flex justify-between items-end border-b-4 border-black pb-4 mb-8">
+            <h2 class="text-4xl font-black uppercase tracking-tight">Top Projects</h2>
+            <a href="/recruiter/projects" class="font-bold uppercase underline underline-offset-4 hover:bg-black hover:text-white px-2 transition-colors">View All Projects →</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {featuredProjects.map(project => (
+                <article class="border-4 border-black p-6 flex flex-col justify-between" style="box-shadow: 8px 8px 0px 0px #000000;">
+                    <div>
+                        <h3 class="text-2xl font-black mb-2 uppercase">{project.data.title}</h3>
+                        <p class="mb-4 font-medium">{project.data.summary}</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        {project.data.tags.map(tag => (
+                            <span class="text-xs font-bold uppercase border-2 border-black px-2 py-1">{tag}</span>
+                        ))}
+                    </div>
+                </article>
+            ))}
+        </div>
+    </section>
+
+    <section class="mb-20">
+        <div class="flex justify-between items-end border-b-4 border-black pb-4 mb-8">
+            <h2 class="text-4xl font-black uppercase tracking-tight">Top Certifications</h2>
+            <a href="/recruiter/certifications" class="font-bold uppercase underline underline-offset-4 hover:bg-black hover:text-white px-2 transition-colors">View All Certifications →</a>
+        </div>
+        <ul class="space-y-6">
+            {featuredCerts.map(cert => (
+                <li class="border-4 border-black p-6 flex justify-between items-center hover:bg-black hover:text-white transition-colors cursor-default" style="box-shadow: 8px 8px 0px 0px #000000;">
+                    <div>
+                        <h3 class="text-2xl font-black uppercase">{cert.data.title}</h3>
+                        <p class="font-bold tracking-widest">{cert.data.issuer} — {cert.data.date}</p>
+                    </div>
+                    {cert.data.credentialUrl && (
+                        <a href={cert.data.credentialUrl} target="_blank" rel="noopener noreferrer" class="border-2 border-current px-4 py-2 uppercase font-bold text-sm bg-white text-black hover:bg-white hover:text-black">
+                            Verify
+                        </a>
+                    )}
+                </li>
+            ))}
+        </ul>
+    </section>
+
+    <section class="mb-10 text-center border-4 border-black p-12" style="box-shadow: 12px 12px 0px 0px #000000;">
+        <h2 class="text-4xl font-black uppercase mb-6">Mari Berdiskusi</h2>
+        <p class="text-xl font-bold mb-8">Tertarik untuk mendiskusikan peluang profesional atau arsitektur sistem?</p>
+        <a href="mailto:email@example.com" class="inline-block border-4 border-black px-8 py-4 text-xl font-black uppercase tracking-widest hover:bg-black hover:text-white transition-colors">
+            Hubungi Saya
+        </a>
+    </section>
+
+</RecruiterLayout>
