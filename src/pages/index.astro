@@ -1,17 +1,41 @@
 ---
-
+import '../styles/global.css';
+import ThemeSwitcher from '../components/islands/ThemeSwitcher.tsx';
 ---
 
-<html lang="en">
+<html lang="id">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Mei's Corner</title>
+
+		<script is:inline>
+      		const storedTheme = localStorage.getItem('mei_corner_theme') || 'flat';
+      		document.documentElement.setAttribute('data-theme', storedTheme);
+    	</script>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="min-h-screen p-8 flex flex-col items-start gap-8">
+		
+		<header>
+			<h1 class="text-4xl font-extrabold mb-2" style="font-family: var(--font-heading);">
+				Mei's Corner
+			</h1>
+			<p class="text-lg" style="color: var(--color-text-secondary);">
+				Sistem Fondasi Tema Berhasil Diinisialisasi.
+			</p>
+		</header>
+
+		<main>
+		<ThemeSwitcher client:load />
+		
+			<div class="mt-12 p-6 border-2 border-black" style="box-shadow: var(--shadow-card); background-color: var(--color-surface);">
+				<h2 class="text-2xl font-bold mb-4">Uji Coba Tampilan Kartu</h2>
+				<p>
+					Kartu ini menggunakan variabel CSS absolut untuk mematuhi aturan desain tanpa bergantung pada utilitas pewarnaan langsung.
+				</p>
+			</div>
+		</main>
+
 	</body>
 </html>

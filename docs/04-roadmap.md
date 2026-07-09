@@ -11,31 +11,31 @@
 **Task: Init project Astro**
 - Description: Setup project Astro baru, konfigurasi dasar, integrasi Tailwind.
 - Acceptance Criteria:
-  - [ ] `astro build` jalan tanpa error
-  - [ ] Tailwind terpasang dan bisa dipakai di komponen
-  - [ ] Repo GitHub dibuat, `.gitignore` sesuai (node_modules, dist, dll)
+  - [ x ] `astro build` jalan tanpa error
+  - [ x ] Tailwind terpasang dan bisa dipakai di komponen
+  - [ x ] Repo GitHub dibuat, `.gitignore` sesuai (node_modules, dist, dll)
 
 **Task: Setup deployment ke Cloudflare Pages**
 - Description: Sambungkan repo ke Cloudflare Pages, pastikan auto-deploy jalan tiap push.
 - Acceptance Criteria:
-  - [ ] Push ke branch utama trigger build otomatis
-  - [ ] Site bisa diakses lewat URL `*.pages.dev`
-  - [ ] Build command & output directory sudah benar di setting Cloudflare
+  - [ x ] Push ke branch utama trigger build otomatis
+  - [ x ] Site bisa diakses lewat URL `*.pages.dev`
+  - [ x ] Build command & output directory sudah benar di setting Cloudflare
 
 ### Epic: Content Model Setup
 
 **Task: Definisikan Content Collections schema**
 - Description: Bikin Zod schema untuk collection `projects`, `modules`, `glossary`, `certifications` sesuai TDD §4.
 - Acceptance Criteria:
-  - [ ] `src/content/config.ts` berisi 4 schema di atas
-  - [ ] Field wajib vs opsional sudah sesuai dokumen TDD
-  - [ ] Astro gak error saat build walau collection masih kosong
+  - [ x ] `src/content/config.ts` berisi 4 schema di atas
+  - [ x ] Field wajib vs opsional sudah sesuai dokumen TDD
+  - [ x ] Astro gak error saat build walau collection masih kosong
 
 **Task: Buat dummy entry tiap collection**
 - Description: Isi 1 contoh entry per collection buat testing schema & rendering.
 - Acceptance Criteria:
-  - [ ] Minimal 1 file `.mdx` di tiap collection, ke-render tanpa error
-  - [ ] Frontmatter dummy sudah lolos validasi Zod
+  - [ x ] Minimal 1 file `.mdx` di tiap collection, ke-render tanpa error
+  - [ x ] Frontmatter dummy sudah lolos validasi Zod
 
 ---
 
@@ -46,16 +46,16 @@
 **Task: Bangun token CSS variable dasar (Flat Design)**
 - Description: Implementasi file `flat.css` sesuai token wajib di Standards & Style Guide §3.
 - Acceptance Criteria:
-  - [ ] Semua token wajib terisi
-  - [ ] `data-theme="flat"` di root mengubah tampilan sesuai token
-  - [ ] Jadi default theme saat pertama kali load
+  - [ x ] Semua token wajib terisi
+  - [ x ] `data-theme="flat"` di root mengubah tampilan sesuai token
+  - [ x ] Jadi default theme saat pertama kali load
 
 **Task: Bangun mekanisme theme switcher**
 - Description: Komponen island buat switch tema, simpan pilihan di `theme-store.ts` + localStorage.
 - Acceptance Criteria:
-  - [ ] Ganti tema gak reload halaman
-  - [ ] Pilihan tema persist setelah refresh
-  - [ ] State tema bisa dibaca komponen lain (buat locking di recruiter path)
+  - [ x ] Ganti tema gak reload halaman
+  - [ x ] Pilihan tema persist setelah refresh
+  - [ x ] State tema bisa dibaca komponen lain (buat locking di recruiter path)
 
 ### Epic: Recruiter Landing
 

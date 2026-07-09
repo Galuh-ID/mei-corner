@@ -1,1 +1,9 @@
 @import "tailwindcss";
+@import "./tokens/flat.css";
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
