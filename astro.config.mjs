@@ -7,11 +7,14 @@ import { unified } from '@astrojs/markdown-remark';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
+
   markdown: {
     processor: unified({
       remarkPlugins: [remarkMath],
@@ -20,8 +23,11 @@ export default defineConfig({
       smartypants: true,
     }),
   },
+
   integrations: [
     react(), 
     mdx()
-  ]
+  ],
+
+  adapter: cloudflare()
 });
